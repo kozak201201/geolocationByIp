@@ -1,25 +1,25 @@
 const IndexOutOfRangeException = require('./exceptions/indexOutOfRangeException');
 
 function binaryIpSearch(arr, ip, startIndex, finishIndex) {
-    let midIndex = Math.trunc((startIndex + finishIndex) / 2);
+    let midIndexOfArray = Math.trunc((startIndex + finishIndex) / 2);
 
-    if (midIndex < 0 || midIndex >= arr.length) {
+    if (midIndexOfArray < 0 || midIndexOfArray >= arr.length) {
         throw new IndexOutOfRangeException('ip not found');
     }
 
-    let midVal = arr[midIndex];
+    let midArr = arr[midIndexOfArray];
 
-    if (ip < midVal[0]) {
-        finishIndex = midIndex;
+    if (ip < midArr[0]) {
+        finishIndex = midIndexOfArray;
         return binaryIpSearch(arr, ip, startIndex - 1, finishIndex);
     }
 
-    if (ip > midVal[1]) {
-        startIndex = midIndex;
+    if (ip > midArr[1]) {
+        startIndex = midIndexOfArray;
         return binaryIpSearch(arr, ip, startIndex, finishIndex + 1);
     }
 
-    return midVal;
+    return midArr;
 }
 
 module.exports.binaryIpSearch = binaryIpSearch;
